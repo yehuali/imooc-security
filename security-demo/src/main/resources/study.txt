@@ -19,3 +19,18 @@ springboot默认的错误处理机制：BasicErrorController
   2.1 962 applyPreHandle
   2.2 ha.handle(processedRequest, response, mappedHandler.getHandler()) //方法参数拼装
 
+@Configuration源码分析 //参考https://blog.csdn.net/liaokailin/article/details/49107209
+getBeanFactoryPostProcessors() 返回
+1.注册配置类配置的类：ConfigurationClassPostProcessor#postProcessBeanDefinitionRegistry
+2.String[] candidateNames = registry.getBeanDefinitionNames(); //获取已经注册的bean名称
+  2.1  ConfigurationClassUtils#checkConfigurationClassCandidate 判断bean是否是配置文件bean(包含Configuration注解)
+        if (isFullConfigurationCandidate(metadata)) {
+      			beanDef.setAttribute(CONFIGURATION_CLASS_ATTRIBUTE, CONFIGURATION_CLASS_FULL);
+        }
+  2.2  parser.parse(candidates);  //包含多种解析器，其中有注解解析器
+       ---> processConfigurationClass(new ConfigurationClass(metadata, beanName));
+  2.3 doProcessConfigurationClass(configClass, sourceClass) //解析Configuration注解
+//待续
+  ConfigurationClassParser#doProcessConfigurationClass
+
+

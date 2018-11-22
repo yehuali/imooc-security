@@ -1,0 +1,21 @@
+打可执行的jar包
+1.在pom加入插件：spring-boot-maven-plugin
+2. java -jar demo.jar
+
+springboot默认的错误处理机制：BasicErrorController
+1.@ResponseBody 将返回转化为json
+2.@RequestMapping(produces = "text/html")  对请求头进行区分返回
+--->接收同一个url，一个返回页面，一个返回json
+3.根据状态码区分错误 /resources/resources/error
+
+
+第三方过滤器怎样集成到项目
+1.传统项目配置web.xml中
+2.springboot中详情见com.imooc.web.config.WebConfig
+
+过滤器、拦截器、切片
+1.过滤器取不到方法，拦截取不到方法里的参数
+2.参考DispatcherServlet.doDispatch
+  2.1 962 applyPreHandle
+  2.2 ha.handle(processedRequest, response, mappedHandler.getHandler()) //方法参数拼装
+

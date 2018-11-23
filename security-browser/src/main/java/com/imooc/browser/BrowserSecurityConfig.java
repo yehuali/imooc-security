@@ -1,4 +1,4 @@
-package com.ticket.browser;
+package com.imooc.browser;
 
 
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		/**
-		 * 表单登录 -- 身份认证
+         * 表单登录 -- 身份认证
 		 * 授权
 		 */
 		http.formLogin()

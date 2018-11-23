@@ -1,0 +1,33 @@
+1.查看OAuth2.0请求方式：
+  https://oauth.net/2/   ---> OAuth 2.0 Framework  --->4.获得授权
+2.授权码模式
+  2.1 引导第三方进行授权：哪个应用请求授权？  请求哪个用户授权？  什么授权？
+      --->不同应用注册分配不同的clientId;
+          登录的用户名和密码;
+          scope：代表授权的范围
+          --->样式url:http://localhost:8060/oauth/authorize?response_type=code&client_id=b15e939d-1940-49d2-9935-b27c98cc3e85&redirect_uri=http://example.com&scope=all
+  2.2 用户同意返回授权码
+  2.3 获取token:/oauth/token
+
+3.密码模式(适用于自己的app)
+
+
+--->同一个用户在过期时间内，token值一样;
+     post请求时，头部须带有clientId和secret授权信息，其他参数参考官方文档(密码模式和授权模式都一样)
+
+4.配置资源服务器，访问资源
+  4.1 带请求头 Authorization  =  token_type  + access_token
+       -->实例：bearer 0977fc37-1692-423f-8829-fa684712db5e
+
+--> 怎样自定义授权模式？怎样自定义access_token的形式？
+==================================================================================================================
+Spring Security Oauth源码分析
+1./oauth/authorize  --->  TokenEndpoint
+2.应用信息：ClientDetailsService(InMemoryClientDetailsService)
+3.结合第三方应用信息创建TokenRquest --> TokenGranter(CompositeTokenGranter)：封装4种授权模式
+4.ResourceOwnerPasswordTokenGranter#getOAuth2Authentication
+  -->authenticationManager.authenticate(userAuth) 根据用户名和密码获取用户信息
+  4.1 将Authentication与OAuth2Request结合成OAuth2Authentication
+
+===========================================================================
+登录成功后处理：AuthenticationSuccessHandler  ---> AuthorizationServerTokenServices生成令牌

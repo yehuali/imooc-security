@@ -30,7 +30,13 @@ getBeanFactoryPostProcessors() 返回
   2.2  parser.parse(candidates);  //包含多种解析器，其中有注解解析器
        ---> processConfigurationClass(new ConfigurationClass(metadata, beanName));
   2.3 doProcessConfigurationClass(configClass, sourceClass) //解析Configuration注解
-//待续
-  ConfigurationClassParser#doProcessConfigurationClass
+  2.4 Set<MethodMetadata> beanMethods = retrieveBeanMethodMetadata(sourceClass);// 解析配置@bean方法
+--->总结：多模块项目，包名一定要统一，否则扫不到配置类
+
+
+springSecurity基本原理
+1.UsernamePasswordAuthenticationFilter（表单登录） BasicAuthenticationFilter（httpBasic登录）
+2.最后一道拦截：FilterSecurityInterceptor (配置规则)
+  --->捕获异常：ExceptionTranslationFilter
 
 

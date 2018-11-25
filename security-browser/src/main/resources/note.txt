@@ -1,0 +1,10 @@
+Spring Social开发第三方登录
+1.ServiceProvider(AbStractOAuth2ServiceProvider)
+  1.1 OAuth2Operations(OAuth2Template)
+  1.2 Api(AbstractOAuth2ApiBinding)
+2.ConnectionFactory(OAuth2ConnectionFactory)
+  2.1 ServiceProvider
+  2.2 ApiAdapter
+3.Connection(OAuth2Connection)
+4.UserConnectionRepository(JdbcUserConnectionRepository)
+

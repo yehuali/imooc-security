@@ -11,17 +11,17 @@
 
     <artifactId>security-demo</artifactId>
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>com.imooc.security</groupId>-->
-            <!--<artifactId>security-browser</artifactId>-->
-            <!--<version>${security.version}</version>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>com.imooc.security</groupId>
-            <artifactId>security-app</artifactId>
+            <artifactId>security-browser</artifactId>
             <version>${security.version}</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.imooc.security</groupId>-->
+            <!--<artifactId>security-app</artifactId>-->
+            <!--<version>${security.version}</version>-->
+        <!--</dependency>-->
         <!-- mysql 8.0.11 与默认的不匹配 -->
         <dependency>
             <groupId>mysql</groupId>
